@@ -1,0 +1,38 @@
+<div class="row">
+	<h2>ブックマーク一覧画面</h2>
+</div>
+<div class="table">
+	<table class="table table-hover table-inverse">
+		<thead>
+			<tr>
+				<th>ブックマークID</th>
+				<th>ブックマーク名</th>
+				<th>URL</th>
+				<th>ステータス</th>
+				<th>会員ID</th>
+				<th>会員名</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @bookmarks.each do |bookmark| %>
+				<tr>
+					<th><%=bookmark.id%></th>
+					<td><%= link_to bookmark.bookmark_name, bookmark_path(bookmark.id) %></td>
+					<td><%= link_to bookmark.bookmark_url do %>
+						<img src="https://www.google.com/s2/favicons?domain=<%=bookmark.bookmark_url%>" width="20px" height="20px">
+					<%end%>
+					<%= bookmark.bookmark_url %></td>
+					<td>
+						<% if bookmark.is_bookmark_status == false %>
+	            <span class="text-danger">非公開中</span>
+	          <% else %>
+	            <span class="text-success">公開中</span>
+	          <% end %>
+					</td>
+					<td><%= bookmark.customer_id %></td>
+					<td><%= link_to bookmark.customer.customer_name, admins_customer_path(bookmark.customer.id)%></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
