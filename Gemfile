@@ -88,6 +88,6 @@ gem 'roo'                       #CSVファイルからデータをインポー�
 
 gem 'dotenv-rails'              #環境変数 google natural language apiのkey
 
-group :production do
-  gem 'mysql2'
-end
+# group :production do
+#   gem 'mysql2'
+# end
